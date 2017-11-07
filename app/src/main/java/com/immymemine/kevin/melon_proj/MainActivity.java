@@ -1,5 +1,6 @@
 package com.immymemine.kevin.melon_proj;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -9,11 +10,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawer;
+
+    //added by B
+    public static final int RESULT_OK_SEARCH=99;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView =findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -57,7 +65,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.search) {
-            //TODO search page 이동
+            //added by B
+            Intent intent=new Intent(MainActivity.this, SearchSongActivity.class);
+            startActivityForResult(intent, RESULT_OK_SEARCH);
             return true;
         }
 
